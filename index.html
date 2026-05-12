@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I International Congress of Interactive Mathematics Conferences</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #07071f;
+    color: #fff;
+    min-height: 100vh;
+  }
+  .ig {
+    max-width: 860px;
+    margin: 0 auto;
+    background: #0a0a2e;
+    padding-bottom: 2rem;
+  }
+
+  /* HEADER */
+  .header {
+    background: #0d0d3b;
+    border-bottom: 3px solid #7F77DD;
+    padding: 2rem 2rem 1.5rem;
+    text-align: center;
+  }
+  .header-badge {
+    display: inline-block;
+    background: #534AB7;
+    color: #CECBF6;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 5px 16px;
+    border-radius: 20px;
+    letter-spacing: 1.5px;
+    margin-bottom: 14px;
+    text-transform: uppercase;
+  }
+  .header h1 {
+    font-size: 26px;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.3;
+    margin-bottom: 8px;
+  }
+  .header h2 {
+    font-size: 14px;
+    color: #AFA9EC;
+    font-weight: 400;
+    margin-bottom: 16px;
+  }
+  .header-meta {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+  .header-meta span {
+    font-size: 13px;
+    color: #9FE1CB;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .header-meta span::before { content: '●'; font-size: 8px; }
+
+  /* SECTIONS */
+  .section { padding: 1.5rem 2rem 0.5rem; }
+  .section-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #7F77DD;
+    text-transform: uppercase;
+    border-left: 4px solid #7F77DD;
+    padding-left: 10px;
+    margin-bottom: 1rem;
+  }
+
+  /* INTRO */
+  .intro-box {
+    background: #12124a;
+    border: 0.5px solid #534AB7;
+    border-radius: 12px;
+    padding: 1.2rem;
+    font-size: 14px;
+    color: #D3D1C7;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+
+  /* STATS */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 0.5rem;
+  }
+  .stat {
+    background: #12124a;
+    border-radius: 10px;
+    padding: 1rem;
+    text-align: center;
+    border: 0.5px solid #3C3489;
+  }
+  .stat-num { font-size: 28px; font-weight: 600; color: #AFA9EC; }
+  .stat-label { font-size: 11px; color: #888780; margin-top: 4px; }
+
+  /* SESSION LABEL */
+  .session-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #EF9F27;
+    background: #412402;
+    border-radius: 6px;
+    padding: 4px 12px;
+    display: inline-block;
+    margin-bottom: 1rem;
+  }
+
+  /* CONFERENCE CARDS */
+  .conf-card {
+    background: #12124a;
+    border-radius: 12px;
+    border: 0.5px solid #3C3489;
+    padding: 1.1rem;
+    margin-bottom: 0.8rem;
+  }
+  .conf-time {
+    font-size: 12px;
+    color: #5DCAA5;
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+  .conf-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 6px;
+    line-height: 1.4;
+  }
+  .conf-speaker {
+    font-size: 13px;
+    color: #AFA9EC;
+    margin-bottom: 6px;
+  }
+  .conf-desc {
+    font-size: 13px;
+    color: #B4B2A9;
+    line-height: 1.6;
+  }
+
+  /* TAGS */
+  .tag {
+    display: inline-block;
+    font-size: 10px;
+    padding: 3px 10px;
+    border-radius: 12px;
+    margin-right: 5px;
+    margin-bottom: 6px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  .tag-logic  { background: #0F6E56; color: #9FE1CB; }
+  .tag-calc   { background: #185FA5; color: #B5D4F4; }
+  .tag-alg    { background: #712B13; color: #F5C4B3; }
+  .tag-stem   { background: #3C3489; color: #CECBF6; }
+  .tag-panel  { background: #633806; color: #FAC775; }
+
+  /* PANEL GRID */
+  .panel-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  .panel-card {
+    background: #0d0d3b;
+    border-radius: 8px;
+    border: 0.5px solid #3C3489;
+    padding: 0.8rem;
+  }
+  .panel-name  { font-size: 13px; font-weight: 600; color: #fff; margin-bottom: 3px; }
+  .panel-country { font-size: 12px; color: #5DCAA5; }
+  .panel-desc  { font-size: 12px; color: #888780; margin-top: 5px; line-height: 1.5; }
+
+  /* STUDENT CARDS */
+  .student-card {
+    background: #12124a;
+    border-radius: 10px;
+    border-left: 4px solid #5DCAA5;
+    padding: 0.9rem;
+    margin-bottom: 0.6rem;
+  }
+  .student-name  { font-size: 13px; font-weight: 600; color: #9FE1CB; }
+  .student-uni   { font-size: 12px; color: #888780; margin-bottom: 5px; }
+  .student-topic { font-size: 13px; color: #D3D1C7; line-height: 1.5; }
+
+  /* UNIVERSITIES */
+  .unis-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    margin-bottom: 0.5rem;
+  }
+  .uni-pill {
+    background: #12124a;
+    border: 0.5px solid #3C3489;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 12px;
+    color: #AFA9EC;
+    text-align: center;
+  }
+
+  /* CONCLUSION */
+  .conclusion {
+    background: #12124a;
+    border: 0.5px solid #534AB7;
+    border-radius: 12px;
+    padding: 1.2rem;
+    font-size: 14px;
+    color: #D3D1C7;
+    line-height: 1.7;
+  }
+  .conclusion strong { color: #AFA9EC; }
+
+  /* DIVIDER */
+  .divider { height: 1px; background: #1a1a5a; margin: 1rem 0; }
+
+  /* FOOTER */
+  .footer {
+    background: #0d0d3b;
+    border-top: 1px solid #3C3489;
+    padding: 1.5rem 2rem;
+    margin-top: 1rem;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .footer-label {
+    font-size: 10px;
+    color: #7F77DD;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .footer-val  { font-size: 13px; color: #AFA9EC; margin-bottom: 3px; }
+  .footer-link { font-size: 12px; color: #5DCAA5; word-break: break-all; }
+
+  .credits {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 12px;
+    color: #5F5E5A;
+    border-top: 0.5px solid #1a1a5a;
+    padding-top: 1rem;
+    line-height: 1.7;
+  }
+  .credits span { color: #534AB7; }
+
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    .header h1 { font-size: 18px; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .panel-grid { grid-template-columns: 1fr; }
+    .unis-grid  { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .header-meta { gap: 12px; }
+  }
+</style>
+</head>
+<body>
+<div class="ig">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-badge">UNAD — Official Academic Event</div>
+    <h1>I International Congress of Interactive<br>Mathematics Conferences</h1>
+    <h2>Gamification · Digital Tools · STEM Applications — Logic, Algebra &amp; Calculus</h2>
+    <div class="header-meta">
+      <span>Monday, April 20, 2025</span>
+      <span>Colombia · Mexico · Chile</span>
+      <span>Live — YouTube UNAD</span>
+    </div>
+  </div>
+
+  <!-- INTRODUCTION -->
+  <div class="section">
+    <div class="section-title">Introduction</div>
+    <div class="intro-box">
+      The National Open and Distance University (UNAD), together with nine prestigious universities from Colombia, Mexico, and Chile, organized the First International Congress of Interactive Mathematics Conferences. This virtual academic event united renowned researchers and professors to share innovative methodologies for teaching mathematics through digital tools, gamification, and STEM approaches — covering Logic, Algebra, Calculus, and expert panels on STEM applications.
+    </div>
+    <div class="stats-grid">
+      <div class="stat"><div class="stat-num">9</div><div class="stat-label">Universities</div></div>
+      <div class="stat"><div class="stat-num">4</div><div class="stat-label">Speakers</div></div>
+      <div class="stat"><div class="stat-num">3</div><div class="stat-label">Countries</div></div>
+      <div class="stat"><div class="stat-num">632</div><div class="stat-label">Reactions</div></div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- MORNING SESSION -->
+  <div class="section">
+    <div class="section-title">Content — Morning session</div>
+    <div class="session-label">&#9728; Morning — 8:00 AM to 12:00 PM</div>
+
+    <div class="conf-card">
+      <div class="conf-time">&#9200; 8:00 AM — Institutional opening</div>
+      <div class="conf-title">Formal opening ceremony of the congress</div>
+      <div class="conf-desc">Welcome to participants from universities across Colombia, Mexico, and Chile. Opening of the first international edition of the congress organized by UNAD.</div>
+    </div>
+
+    <div class="conf-card">
+      <div class="conf-time">&#9200; 8:30 AM — Keynote conference</div>
+      <div class="conf-title">Active Methodologies and Universal Design for Learning as a Pedagogical Framework for Teaching Mathematics in STEM Environments</div>
+      <div class="conf-speaker">&#128100; Dr. Eilen Oviedo González — Mexico · Universidad Autónoma de Baja California (UABC)</div>
+      <span class="tag tag-stem">STEM</span>
+      <div class="conf-desc">The conference argues that the Universal Design for Learning (UDL) and active methodologies — project-based learning, intentional gamification, and flipped classroom — form the necessary pedagogical framework for teaching mathematics. The central thesis: technology alone does not guarantee learning; pedagogical design does. Dr. Oviedo González holds a PhD in Educational Management and Policy, with 40+ peer-reviewed articles and 6 published books.</div>
+    </div>
+
+    <div class="conf-card">
+      <div class="conf-time">&#9200; 9:40 AM — Thematic conference · Logic</div>
+      <div class="conf-title">The DAE Method as an Interactive Strategy for the Development of Logical-Mathematical Thinking</div>
+      <div class="conf-speaker">&#128100; Dr. Leidy Hernández Mesa — Mexico · Universidad Autónoma de Baja California (UABC)</div>
+      <span class="tag tag-logic">Logic</span>
+      <div class="conf-desc">The DAE method (I Discover, I Learn, I Teach) is structured in three moments: self-discovery of prior knowledge, collective reflection and collaborative problem-solving, and argumentation of constructed knowledge. The approach strengthens analysis, argumentation, and critical reflection in mathematics students. Dr. Hernández Mesa is a full-time Professor-Researcher at UABC and creator of the DAE methodology for teacher training.</div>
+    </div>
+
+    <div class="conf-card">
+      <div class="conf-time">&#9200; 10:50 AM — Expert panel · STEM Applications</div>
+      <div class="conf-title">STEM Applications — International Expert Panel — Colombia · Mexico · Chile</div>
+      <span class="tag tag-panel">Expert Panel</span>
+      <div class="panel-grid">
+        <div class="panel-card">
+          <div class="panel-name">Dr. Jorge O. Mata Ramírez</div>
+          <div class="panel-country">&#127474;&#127485; Mexico — UABC</div>
+          <div class="panel-desc">Specialist in nanotechnology, crystalline and nanostructured materials. Professor-Researcher with 40+ indexed articles and 8 books.</div>
+        </div>
+        <div class="panel-card">
+          <div class="panel-name">Dr. Martha C. Mosquera Urrutia</div>
+          <div class="panel-country">&#127464;&#127476; Colombia — UPN</div>
+          <div class="panel-desc">Specialist in transformative education, anti-racism, intersectionality, and social justice in Latin America. Member of INCT-CNPq Brazil.</div>
+        </div>
+        <div class="panel-card">
+          <div class="panel-name">Mg. Lina M. Toro Quintero</div>
+          <div class="panel-country">&#127464;&#127476; Colombia</div>
+          <div class="panel-desc">Pioneer in computational thinking. Creator of ENDER (Departmental Robotics Meeting). Medal of Excellence in Teaching and Orden Elelvina López.</div>
+        </div>
+        <div class="panel-card">
+          <div class="panel-name">Dr. Estefanía Bravo Rubio</div>
+          <div class="panel-country">&#127464;&#127473; Chile — UTFSM</div>
+          <div class="panel-desc">Specialist in algebraic geometry, Jacobi varieties, and Riemann surfaces. Founder of "Exploradoras Matemáticas" promoting women in science.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- AFTERNOON SESSION -->
+  <div class="section">
+    <div class="section-title">Content — Afternoon session</div>
+    <div class="session-label">&#9790; Afternoon — 2:00 PM to 4:00 PM</div>
+
+    <div class="conf-card">
+      <div class="conf-time">&#9200; 2:00 PM — Thematic conference · Algebra</div>
+      <div class="conf-title">Papiroflexia and Algebraic Thinking: From Folding to Abstraction</div>
+      <div class="conf-speaker">&#128100; Dr. Estefanía Bravo Rubio — Chile · Universidad Técnica Federico Santa María</div>
+      <span class="tag tag-alg">Algebra</span>
+      <div class="conf-desc">This talk proposes origami (paper folding) as a didactic strategy that bridges the concrete and the abstract. Through folding, students analyze regularities, invariants, and relationships, enabling the transition toward formal algebraic representations such as functions and structural patterns.</div>
+    </div>
+
+    <div class="conf-card">
+      <div class="conf-time">&#9200; 3:00 PM — Thematic conference · Calculus</div>
+      <div class="conf-title">Calculus from a Socioepistemological Modeling Category with Digital Technologies: GeoGebra, Sensors and Graphing Calculators in the Classroom</div>
+      <div class="conf-speaker">&#128100; Dr. María Esther Magali Méndez Guevara — Mexico · Universidad Autónoma de Guerrero</div>
+      <span class="tag tag-calc">Calculus</span>
+      <div class="conf-desc">The conference presents a Socioepistemological framework for teaching calculus through mathematical modeling. It demonstrates how GeoGebra, physical sensors, and graphing calculators help students resignify polynomial functions and understand the variation and behavior of variables in real-world contexts. Dr. Méndez Guevara is a Doctor in Mathematics Education (CINVESTAV-IPN) and member of SNIl Level I.</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- STUDENT PRESENTATIONS -->
+  <div class="section">
+    <div class="section-title">Student research presentations — 9:00 AM to 12:00 PM</div>
+
+    <div class="student-card">
+      <div class="student-name">Yonathan Andrés Bermeo Orozco</div>
+      <div class="student-uni">Universidad de la Amazonia, Florencia</div>
+      <div class="student-topic">Understanding derivatives with GeoGebra: geometric interpretation and optimization of geometric bodies such as cylinders, cones, and other shapes using differential calculus.</div>
+    </div>
+    <div class="student-card">
+      <div class="student-name">Rosa Luisa Manjarrez Machacón</div>
+      <div class="student-uni">Universidad Nacional Abierta y a Distancia — UNAD</div>
+      <div class="student-topic">Mindfulness practices through construction of mandalas with geometric transformations in GeoGebra — fostering attention and emotional connection in mathematics learning.</div>
+    </div>
+    <div class="student-card">
+      <div class="student-name">Brigni Dahiana Rendón Toro</div>
+      <div class="student-uni">Universidad Nacional Abierta y a Distancia — UNAD</div>
+      <div class="student-topic">Gamification of Integral Calculus: Interactive strategies for visualizing the area under the curve — integrating progressive levels, scoring systems, and real-time graphical representations.</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- UNIVERSITIES -->
+  <div class="section">
+    <div class="section-title">Participating universities</div>
+    <div class="unis-grid">
+      <div class="uni-pill">Univ. Autónoma de Baja California (Mexico)</div>
+      <div class="uni-pill">Univ. Autónoma de Guerrero (Mexico)</div>
+      <div class="uni-pill">Univ. Técnica Federico Santa María (Chile)</div>
+      <div class="uni-pill">Universidad de la Amazonia (Colombia)</div>
+      <div class="uni-pill">UNAD — Colombia</div>
+      <div class="uni-pill">Univ. Tecnológica del Chocó (Colombia)</div>
+      <div class="uni-pill">Universidad Surcolombiana (Colombia)</div>
+      <div class="uni-pill">Universidad de Pamplona (Colombia)</div>
+      <div class="uni-pill">Universidad Icesi (Colombia)</div>
+      <div class="uni-pill">UNIMINUTO (Colombia)</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- CONCLUSION -->
+  <div class="section">
+    <div class="section-title">Conclusion</div>
+    <div class="conclusion">
+      The I International Congress of Interactive Mathematics Conferences demonstrated that the future of mathematics education lies in the integration of active pedagogies, digital tools, and collaborative research. From the UDL framework to the DAE method, from origami-based algebra to GeoGebra-assisted calculus modeling, each conference reinforced a powerful idea: <strong>mathematics becomes meaningful when it is taught through experience, creativity, and technology.</strong> This event united universities from three countries under a shared commitment to transforming how mathematics is taught and learned at the higher education level.
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-label">Sources</div>
+        <div class="footer-link">https://youtube.com/live/AnkYqxmsRi4</div>
+        <div class="footer-val" style="margin-top:6px">Organizer: UNAD Institucional</div>
+        <div class="footer-val">Event: I Congreso Internacional de Conferencias Matemáticas Interactivas</div>
+        <div class="footer-val">Date: April 20, 2025</div>
+      </div>
+      <div>
+        <div class="footer-label">Speakers</div>
+        <div class="footer-val">Dr. Eilen Oviedo González — Mexico</div>
+        <div class="footer-val">Dr. Leidy Hernández Mesa — Mexico</div>
+        <div class="footer-val">Dr. Estefanía Bravo Rubio — Chile</div>
+        <div class="footer-val">Dr. María Esther Magali Méndez Guevara — Mexico</div>
+      </div>
+    </div>
+    <div class="credits">
+      Designed for: Differential Calculus · UNAD · CEAD Tunja, Boyacá · May 2025<br>
+      <span>Joy Daniel Roa Leguizamón · Ingeniería Electrónica · UNAD · CEAD Tunja, Boyacá</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
